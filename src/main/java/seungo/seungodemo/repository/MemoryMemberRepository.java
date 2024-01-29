@@ -1,9 +1,11 @@
 package seungo.seungodemo.repository;
 
+import org.springframework.stereotype.Repository;
 import seungo.seungodemo.domain.Member;
 
 import java.util.*;
 
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
     private static final Map<Long, Member> store = new HashMap<>();
