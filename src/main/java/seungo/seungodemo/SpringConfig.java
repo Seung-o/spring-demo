@@ -3,7 +3,7 @@ package seungo.seungodemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import seungo.seungodemo.repository.JdbcMemberRepository;
+import seungo.seungodemo.repository.JdbcTemplateMemberRepository;
 import seungo.seungodemo.repository.MemberRepository;
 import seungo.seungodemo.service.MemberService;
 
@@ -26,6 +26,6 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
