@@ -1,29 +1,23 @@
 package seungo.seungodemo.service;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 import seungo.seungodemo.domain.Member;
-import seungo.seungodemo.repository.MemoryMemberRepository;
+import seungo.seungodemo.repository.MemberRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class MemberServiceTest {
-
-    MemoryMemberRepository memberRepository;
+@SpringBootTest
+@Transactional
+public class MemberServiceIntegrationTest {
+    @Autowired
+    MemberRepository memberRepository;
+    @Autowired
     MemberService memberService;
 
-    @BeforeEach
-    public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-    }
-
-    @AfterEach
-    public void afterEach() {
-        memberRepository.clearStore();
-    }
 
     @Test
     void 회원가입() {
@@ -55,4 +49,5 @@ class MemberServiceTest {
         // then
         assertEquals(exception.getMessage(), "이미 존재하는 회원입니다.");
     }
+
 }
