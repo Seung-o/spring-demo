@@ -1,13 +1,14 @@
 package seungo.seungodemo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import seungo.seungodemo.domain.Member;
 import seungo.seungodemo.repository.MemberRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
